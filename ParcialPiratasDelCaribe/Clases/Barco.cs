@@ -86,5 +86,10 @@ namespace PiratasDelCaribe{
         public void aumentarPoderDeFuego(int valor){
             poderDeFuego += valor;
         }
+        public bool estaDesolado()
+        {
+            return (resistencia + poderDeFuego + municiones) == 0;
+        }
+
     }
 }
