@@ -14,6 +14,7 @@ namespace PruebasUnitarias
         JackSparrow jackSparrow;
         ArmadaInglesa armadaInglesa;
         Barco unBarco;
+        Barco otroBarco;
 
         [TestCleanup]
         public void testClean()
@@ -24,6 +25,7 @@ namespace PruebasUnitarias
             jackSparrow = null;
             armadaInglesa = null;
             unBarco = null;
+            otroBarco = null;
         }
 
         [TestInitialize]
@@ -42,7 +44,8 @@ namespace PruebasUnitarias
             tripulantes.Add(unCocinero);
             tripulantes.Add(unNavegador);
             armadaInglesa = ArmadaInglesa.obtenerInstancia();
-            unBarco = new Barco(50, 100, 50, tripulantes, armadaInglesa);
+            unBarco = new Barco(50, 100, 10, tripulantes, armadaInglesa);
+            otroBarco = new Barco(80, 40, 40, tripulantes, armadaInglesa);
         }
 
         [TestMethod]
@@ -76,7 +79,7 @@ namespace PruebasUnitarias
             armadaInglesa.aplicarBonus(unBarco);
             var resultado = unBarco.municiones;
             //Assert
-            Assert.AreEqual(65, resultado);
+            Assert.AreEqual(13, resultado);
         }
         [TestMethod]
         // Testeando: "Cuando un barco pierde un enfrentamiento, queda desolado"
@@ -89,5 +92,15 @@ namespace PruebasUnitarias
             //Assert
             Assert.IsTrue(resultado);
         }
+        [TestMethod]
+        /* Testeando: "Cuando un barco intenta atacar a otro barco 
+        con mas municiones de las que posee, no puede hacerlo"*/
+        public void UnBarcoNoPuedeAtacarAOtroSinoTieneLasMunicionesSuficientes()
+        {
+            //Arrange
+            //Act
+            //Assert
+        }
+
     }
 }
