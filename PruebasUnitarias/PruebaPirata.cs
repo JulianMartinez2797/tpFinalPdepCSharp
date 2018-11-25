@@ -9,26 +9,49 @@ namespace PruebasUnitarias
     [TestClass]
     public class PruebaPirata
     {
+        Guerrero unGuerrero;
+        Navegador unNavegador;
+        Cocinero unCocinero;
+        JackSparrow jackSparrow;
+
+        [TestCleanup]
+        public void testClean()
+        {
+            unGuerrero = null;
+            unNavegador = null;
+            unCocinero = null;
+            jackSparrow = null;
+        }
+
+        [TestInitialize]
+        public void testInit()
+        {
+            unGuerrero = new Guerrero(150, 25, 5);
+            unNavegador = new Navegador(50, 10);
+            List<String> ingredientes = new List<String>();
+            ingredientes.Add("tomate");
+            ingredientes.Add("arroz");
+            ingredientes.Add("carne");
+            unCocinero = new Cocinero(80, 12, ingredientes);
+            jackSparrow = JackSparrow.obtenerInstancia();
+        }
+
         [TestMethod]
         // Testeando: "El poder de mando de un Guerrero es su poder de pelea * su vitalidad"
         public void PoderDeMandoGuerrero()
         {
             // Arrange
-            var unGuerrero = new Guerrero(10, 15, 5);
-
             // Act
             var resultado = unGuerrero.poderDeMando();
 
             // Assert
-            Assert.AreEqual(75, resultado);
+            Assert.AreEqual(125, resultado);
         }
         [TestMethod]
         // Testeando: "El poder de mando de un Navegador es su inteligencia al cuadrado"
         public void PoderDeMandoNavegador()
         {
             // Arrange
-            var unNavegador = new Navegador(5, 10);
-
             // Act
             var resultado = unNavegador.poderDeMando();
 
@@ -41,13 +64,6 @@ namespace PruebasUnitarias
         public void PoderDeMandoCocinero()
         {
             // Arrange
-            List<String> ingredientes = new List<String>();
-            ingredientes.Add("tomate");
-            ingredientes.Add("arroz");
-            ingredientes.Add("carne");
-
-            var unCocinero = new Cocinero(2, 12, ingredientes);
-            
             // Act
             var resultado = unCocinero.poderDeMando();
 
@@ -59,7 +75,6 @@ namespace PruebasUnitarias
         public void PoderDeMandoJackSparrow()
         {
             // Arrange
-            var jackSparrow = JackSparrow.obtenerInstancia();
             // Act
             var resultado = jackSparrow.poderDeMando();   
         
@@ -71,12 +86,10 @@ namespace PruebasUnitarias
         public void EnergiaDeJackDespuesDeBeberRonConUnTripulante()
         {
             // Arrange
-            var jackSparrow = JackSparrow.obtenerInstancia();
-            var unGuerrero = new Guerrero(150, 5, 10); // O un cocinero, o un navegador
             // Act
             jackSparrow.beberRonCon(unGuerrero);
             var resultado = jackSparrow.energia;
-
+      
             // Assert
             Assert.AreEqual(600, resultado);
         }
@@ -85,8 +98,6 @@ namespace PruebasUnitarias
         public void EnergiaDePirataDespuesDeBeberRonConUnTripulante()
         {
             // Arrange
-            var jackSparrow = JackSparrow.obtenerInstancia();
-            var unGuerrero = new Guerrero(150, 5, 10); // O un navegador
             // Act
             jackSparrow.beberRonCon(unGuerrero);
             var resultado = unGuerrero.energia;
@@ -99,12 +110,6 @@ namespace PruebasUnitarias
         public void CocineroDespuesDeBeberRonConJack()
         {
             // Arrange
-            var jackSparrow = JackSparrow.obtenerInstancia();
-            List<String> ingredientes = new List<String>();
-            ingredientes.Add("tomate");
-            ingredientes.Add("arroz");
-            ingredientes.Add("carne");
-            var unCocinero = new Cocinero(100, 10, ingredientes);
             // Act
             jackSparrow.beberRonCon(unCocinero);
             var resultado = unCocinero.Ingredientes.Count();
@@ -116,7 +121,6 @@ namespace PruebasUnitarias
         public void UnPirataConMasDe100DePoderDeMandoEsFuerte()
         {
             // Arrange
-            var unGuerrero = new Guerrero(10, 25, 5);
             // Act
             var resultado = unGuerrero.esFuerte();
             // Assert
