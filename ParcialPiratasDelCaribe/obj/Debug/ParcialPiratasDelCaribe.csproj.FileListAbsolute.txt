@@ -1,0 +1,7 @@
+C:\Users\Julian\source\repos\ParcialPiratasDelCaribe\ParcialPiratasDelCaribe\obj\Debug\ParcialPiratasDelCaribe.csprojAssemblyReference.cache
+C:\Users\Julian\source\repos\ParcialPiratasDelCaribe\ParcialPiratasDelCaribe\obj\Debug\ParcialPiratasDelCaribe.csproj.CoreCompileInputs.cache
+C:\Users\Julian\source\repos\ParcialPiratasDelCaribe\ParcialPiratasDelCaribe\bin\Debug\ParcialPiratasDelCaribe.exe.config
+C:\Users\Julian\source\repos\ParcialPiratasDelCaribe\ParcialPiratasDelCaribe\bin\Debug\ParcialPiratasDelCaribe.exe
+C:\Users\Julian\source\repos\ParcialPiratasDelCaribe\ParcialPiratasDelCaribe\bin\Debug\ParcialPiratasDelCaribe.pdb
+C:\Users\Julian\source\repos\ParcialPiratasDelCaribe\ParcialPiratasDelCaribe\obj\Debug\ParcialPiratasDelCaribe.exe
+C:\Users\Julian\source\repos\ParcialPiratasDelCaribe\ParcialPiratasDelCaribe\obj\Debug\ParcialPiratasDelCaribe.pdb
