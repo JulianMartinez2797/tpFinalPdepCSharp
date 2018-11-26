@@ -32,11 +32,11 @@ namespace PiratasDelCaribe{
         }
         public void enfrentarseContra(Barco unBarco){
             if(this.fuerza() > unBarco.fuerza()){
-                this.ganarEnfrentamiento();
+                this.ganarEnfrentamiento(unBarco);
                 unBarco.perderEnfrentamiento();
             }else{
                 this.perderEnfrentamiento();
-                unBarco.ganarEnfrentamiento();
+                unBarco.ganarEnfrentamiento(this);
             }
         }
         public void perderEnfrentamiento(){
@@ -48,8 +48,13 @@ namespace PiratasDelCaribe{
             poderDeFuego = 0;
             municiones = 0;
         }
-        public void ganarEnfrentamiento(){
-            //tripulantes.Add();
+        public void ganarEnfrentamiento(Barco unBarco)
+        {
+            tripulantes.Concat(unBarco.tripulantesFuertes());
+        }
+        private List<ITripulante> tripulantesFuertes()
+        {
+            return tripulantes.Where((ITripulante unTripulante) => unTripulante.esFuerte()).ToList();
         }
         public void dispararCanionasoA(Barco unBarco,double cantidad){
             if(municiones < cantidad){
